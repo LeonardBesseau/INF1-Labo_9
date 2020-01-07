@@ -12,6 +12,7 @@ Compilateur : g++ 7.4.0
 
 --------------------------- */
 #include "lecture.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -27,16 +28,19 @@ vector<string> readFileByLine(const string &filename) {
     inputFile.close();
 }
 
+void inverseList(std::vector<std::string> &dictionary){
+    for (size_t start = 0, end = dictionary.size()-1; start < end ; ++start, --end) {
+        swap(dictionary.at(start),dictionary.at(end));
+    }
+}
+
 void bubbleSort(std::vector<std::string> &dictionary){
     size_t lastElement = dictionary.size(); // end of the unsorted part of the list
     do{
         size_t newLastElement = 0; //index of the future end of the unsorted part of the list
         for (size_t i = 1; i < lastElement; ++i) {
             if(dictionary.at(i-1) > dictionary.at(i)){
-                // swap element
-                string temp = dictionary.at(i-1);
-                dictionary.at(i-1) = dictionary.at(i);
-                dictionary.at(i) = temp;
+                swap(dictionary.at(i-1),dictionary.at(i));
                 // if future element are already ordered, next loop will ignore them
                 newLastElement=i;
             }

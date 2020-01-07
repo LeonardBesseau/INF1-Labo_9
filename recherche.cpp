@@ -109,10 +109,14 @@ bool rechercheDichotomiqueRecursive(vector<string>::iterator begin,
     if (test == word) {
         return true;
     } else {
-        if (word > test) {
-            return rechercheDichotomiqueRecursive(middle, end, word);
-        } else {
-            end = middle - 1;
+        if(begin == end){
+            return false;
+        }else{
+            if (word > test) {
+                return rechercheDichotomiqueRecursive(middle+1, end, word);
+            } else {
+                return rechercheDichotomiqueRecursive(begin, middle, word);
+            }
         }
     }
 }

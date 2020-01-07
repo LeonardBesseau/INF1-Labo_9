@@ -6,10 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Labo_9
-        .gitignore
-        dictionary.txt
         lecture.cpp
-        lecture.h
         main.cpp
-        recherche.cpp
-        recherche.h)
+        recherche.cpp)

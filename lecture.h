@@ -19,9 +19,8 @@ Compilateur : g++ 7.4.0
 #include <fstream>
 #include <vector>
 
-using namespace std;
 
-/*
+/**
  * \brief read file by line
  *
  * This method read a file line by line.
@@ -30,6 +29,8 @@ using namespace std;
  *
  * \param name of the file by reference (constant)
  */
-vector<string> readFileByLine(const string &filename);
+std::vector<std::string> readFileByLine(const std::string &filename);
+
+void bubbleSort(std::vector<std::string> &dictionary);
 
 #endif //LABO_9_LECTURE_H

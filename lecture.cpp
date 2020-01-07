@@ -26,3 +26,21 @@ vector<string> readFileByLine(const string &filename) {
     }
     inputFile.close();
 }
+
+void bubbleSort(std::vector<std::string> &dictionary){
+    size_t lastElement = dictionary.size(); // end of the unsorted part of the list
+    do{
+        size_t newLastElement = 0; //index of the future end of the unsorted part of the list
+        for (size_t i = 1; i < lastElement; ++i) {
+            if(dictionary.at(i-1) > dictionary.at(i)){
+                // swap element
+                string temp = dictionary.at(i-1);
+                dictionary.at(i-1) = dictionary.at(i);
+                dictionary.at(i) = temp;
+                // if future element are already ordered, next loop will ignore them
+                newLastElement=i;
+            }
+        }
+        lastElement= newLastElement;
+    }while(lastElement > 0);
+}

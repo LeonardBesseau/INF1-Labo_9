@@ -15,6 +15,9 @@ Compilateur : g++ 7.4.0
 #include "recherche.h"
 using namespace std;
 
+bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word,
+                                    size_t first, size_t last);
+
 size_t rechercheLineaire(const vector<string> &dictionary, const string &word){
     for (size_t i = 0; i < dictionary.size(); ++i) {
         if(dictionary.at(i) == word){
@@ -51,9 +54,8 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator begin,
 
     vector<string>::iterator output = end;
 
-
     while(begin <= end){
-        size_t size = end-begin;
+        size_t size = end-begin; // size of the list
         size_t decal = size/2;
         vector<string>::iterator middle = begin+decal;
         string test = *(middle);
@@ -61,16 +63,34 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator begin,
             output = middle;
             break;
         }else{
-
             if(word > test){
                 begin = middle+1;
             }else{
                 end = middle-1;
             }
-
         }
     }
     return output;
+}
 
+bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word){
+    return rechercheDichotomiqueRecursive(dictionary, word, 0, dictionary.size());
+}
 
+bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word,
+                                    size_t first, size_t last){
+    size_t middle = (last+first)/2;
+    string test = dictionary.at(middle);
+    if(first==last){
+        return false;
+    }
+    if(test == word){
+        return true;
+    }else{
+        if(word > test){
+            return rechercheDichotomiqueRecursive(dictionary, word, middle+1, last);
+        }else{
+            return rechercheDichotomiqueRecursive(dictionary, word, first, middle-1);
+        }
+    }
 }

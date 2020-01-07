@@ -3,4 +3,4 @@ project(Labo_9)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Labo_9 main.cpp)
+add_executable(Labo_9 main.cpp lecture.cpp recherche.cpp)

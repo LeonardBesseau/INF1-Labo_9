@@ -23,6 +23,10 @@ size_t rechercheLineaire(const std::vector<std::string> &dictionary, const std::
 std::vector<std::string>::iterator rechercheLineaire(std::vector<std::string>::iterator begin,
         std::vector<std::string>::iterator end , const std::string &word);
 
+size_t rechercheDichotomique(const std::vector<std::string> &dictionary, const std::string &word);
+
+std::vector<std::string>::iterator rechercheDichotomique(std::vector<std::string>::iterator begin,
+        std::vector<std::string>::iterator end , const std::string &word);
 
 
 #endif //LABO_9_RECHERCHE_H

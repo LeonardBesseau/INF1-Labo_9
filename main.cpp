@@ -12,8 +12,16 @@ Compilateur : g++ 7.4.0
 
 --------------------------- */
 #include <iostream>
+#include "recherche.h"
+
+using namespace std;
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
+    vector<string> test{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",
+                        "Kilo", "Lima", "Mike", "Novembe", "Osca", "Papa", "Quebec", "Romeo", "Sierra", "Tango",
+                        "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"};
+    string a = "Whiskey";
+    cout << rechercheDichotomique(test, a);
     return 0;
 }

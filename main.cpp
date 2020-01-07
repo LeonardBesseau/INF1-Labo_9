@@ -22,9 +22,11 @@ int main() {
     vector<string> test{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",
                         "Kilo", "Lima", "Mike", "Novembe", "Osca", "Papa", "Quebec", "Romeo", "Sierra", "Tango",
                         "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"};
-    vector<string> test_shuffled {"kilo","golf","novembe","charlie","alpha","sierra","delta","uniform","yankee","tango","echo","lima","xray","victo","bravo","romeo","zulu","hotel","mike","juliet","quebec","foxtrot","india","osca","papa","whiskey"};
+    vector<string> test_shuffled{"kilo", "golf", "novembe", "charlie", "alpha", "sierra", "delta", "uniform", "yankee",
+                                 "tango", "echo", "lima", "xray", "victo", "bravo", "romeo", "zulu", "hotel", "mike",
+                                 "juliet", "quebec", "foxtrot", "india", "osca", "papa", "whiskey"};
     bubbleSort(test_shuffled);
     string a = "Whiskey";
-    cout << rechercheDichotomiqueRecursive(test, "Alpha");
+    cout << rechercheDichotomiqueRecursive(test_shuffled, "alpha");
     return 0;
 }

@@ -37,4 +37,7 @@ std::vector<std::string>::iterator rechercheDichotomique(std::vector<std::string
 
 bool rechercheDichotomiqueRecursive(const std::vector<std::string> &dictionary, const std::string &word);
 
+bool rechercheDichotomiqueRecursive(std::vector<std::string>::iterator begin,
+        std::vector<std::string>::iterator end , const std::string &word);
+
 #endif //LABO_9_RECHERCHE_H

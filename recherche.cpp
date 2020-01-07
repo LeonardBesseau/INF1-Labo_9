@@ -13,36 +13,37 @@ Compilateur : g++ 7.4.0
 --------------------------- */
 
 #include "recherche.h"
+
 using namespace std;
 
 bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word,
                                     size_t first, size_t last);
 
-size_t rechercheLineaire(const vector<string> &dictionary, const string &word){
+size_t rechercheLineaire(const vector<string> &dictionary, const string &word) {
     for (size_t i = 0; i < dictionary.size(); ++i) {
-        if(dictionary.at(i) == word){
+        if (dictionary.at(i) == word) {
             return i;
         }
     }
     return size_t(-1);
 }
 
-size_t rechercheDichotomique(const vector<string> &dictionary, const string &word){
+size_t rechercheDichotomique(const vector<string> &dictionary, const string &word) {
     size_t start = 0;
-    size_t end= dictionary.size()-1;
+    size_t end = dictionary.size() - 1;
     size_t output = size_t(-1);
 
-    while(start <= end){
-        size_t middle = (start+end)/2;
+    while (start <= end) {
+        size_t middle = (start + end) / 2;
         string test = dictionary.at(middle);
-        if(test == word){
+        if (test == word) {
             output = middle;
             break;
-        }else{
-            if(word > test){
-                start = middle+1;
-            }else{
-                end= middle-1;
+        } else {
+            if (word > test) {
+                start = middle + 1;
+            } else {
+                end = middle - 1;
             }
         }
     }
@@ -50,47 +51,68 @@ size_t rechercheDichotomique(const vector<string> &dictionary, const string &wor
 }
 
 vector<string>::iterator rechercheDichotomique(vector<string>::iterator begin,
-        vector<string>::iterator end , const string &word){
+                                               vector<string>::iterator end, const string &word) {
 
     vector<string>::iterator output = end;
 
-    while(begin <= end){
-        size_t size = end-begin; // size of the list
-        size_t decal = size/2;
-        vector<string>::iterator middle = begin+decal;
+    while (begin <= end) {
+        size_t size = end - begin; // size of the list
+        size_t decal = size / 2;
+        vector<string>::iterator middle = begin + decal;
         string test = *(middle);
-        if(test == word){
+        if (test == word) {
             output = middle;
             break;
-        }else{
-            if(word > test){
-                begin = middle+1;
-            }else{
-                end = middle-1;
+        } else {
+            if (word > test) {
+                begin = middle + 1;
+            } else {
+                end = middle - 1;
             }
         }
     }
     return output;
 }
 
-bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word){
+bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word) {
     return rechercheDichotomiqueRecursive(dictionary, word, 0, dictionary.size());
 }
 
 bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word,
-                                    size_t first, size_t last){
-    size_t middle = (last+first)/2;
+                                    size_t first, size_t last) {
+    size_t middle = (last + first) / 2;
+
     string test = dictionary.at(middle);
-    if(first==last){
-        return false;
-    }
-    if(test == word){
+
+    if (test == word) {
         return true;
-    }else{
-        if(word > test){
-            return rechercheDichotomiqueRecursive(dictionary, word, middle+1, last);
-        }else{
-            return rechercheDichotomiqueRecursive(dictionary, word, first, middle-1);
+    } else {
+        if (middle == 0 || first == last) {
+            return false;
+        } else {
+            if (word > test) {
+                return rechercheDichotomiqueRecursive(dictionary, word, middle+1, last);
+            } else {
+                return rechercheDichotomiqueRecursive(dictionary, word, first, middle );
+            }
+        }
+    }
+}
+
+
+bool rechercheDichotomiqueRecursive(vector<string>::iterator begin,
+                                    vector<string>::iterator end, const string &word) {
+    size_t size = end - begin; // size of the list
+    size_t decal = size / 2;
+    vector<string>::iterator middle = begin + decal;
+    string test = *(middle);
+    if (test == word) {
+        return true;
+    } else {
+        if (word > test) {
+            return rechercheDichotomiqueRecursive(middle, end, word);
+        } else {
+            end = middle - 1;
         }
     }
 }

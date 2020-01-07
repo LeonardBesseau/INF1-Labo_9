@@ -35,11 +35,15 @@ Compilateur : g++ 7.4.0
 std::vector<std::string> readFileByLine(const std::string &filename);
 
 
+/**
+ * Inverse the dictionary
+ * @param dictionary a vector of string containing the entries of the dictionary
+ */
 void inverseList(std::vector<std::string> &dictionary);
 
 /**
  * Sort the dictionary using bubbleSort
- * @param dictionary a vector of string containing the entry of the dictionary
+ * @param dictionary a vector of string containing the entries of the dictionary
  * @details based on https://en.wikipedia.org/wiki/Bubble_sort#Optimizing_bubble_sort
  */
 void bubbleSort(std::vector<std::string> &dictionary);

@@ -20,6 +20,11 @@ Compilateur : g++ 7.4.0
 
 #include <string>
 
+/**
+ * Swap two element between themselves
+ * @param a the first string to be swapped
+ * @param b the second string to be swapped
+ */
 void swap(std::string &a, std::string &b);
 
 

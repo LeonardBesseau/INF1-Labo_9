@@ -20,12 +20,13 @@ Compilateur : g++ 7.4.0
 using namespace std;
 
 /**
- * 
- * @param dictionary
- * @param word
- * @param first
- * @param last
- * @return
+ * Search recursively using binary search if a word is contained inside a dictionary in an interval [a,b)
+ * @param dictionary a vector of string containing the entries of the dictionary
+ * @param word a string containing the word to find
+ * @param first the beginning of the interval in which to look for (included)
+ * @param last the end of the interval in which to look for (non-included)
+ * @details average performance = O(log n)
+ * @return true if the word is in the array, false otherwise
  */
 bool rechercheDichotomiqueRecursive(const vector<string> &dictionary, const string &word,
                                     size_t first, size_t last);

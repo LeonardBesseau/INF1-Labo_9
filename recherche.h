@@ -21,25 +21,61 @@ Compilateur : g++ 7.4.0
 #include <vector>
 #include <string>
 
+/**
+ * Search linearly if a word is contained inside a dictionary
+ * @param dictionary a vector of string containing the entries of the dictionary
+ * @param word a string containing the word to find
+ * @return an unsigned integer representing the index of the word in the dictionary or size_t(-1) otherwise
+ */
 size_t rechercheLineaire(const std::vector<std::string> &dictionary, const std::string &word);
 
+
+/**
+ * Search linearly if a word is contained inside a dictionary
+ * @param begin an iterator pointing to the beginning of the vector
+ * @param end an iterator pointing to the end of the vector
+ * @param word a string containing the word to find
+ * @return an iterator at the index of the word in the dictionary or end otherwise
+ */
 std::vector<std::string>::iterator rechercheLineaire(std::vector<std::string>::iterator begin,
         std::vector<std::string>::iterator end , const std::string &word);
 
 /**
- *
- * @param dictionary
- * @param word
+ * Search using binary search if a word is contained inside a dictionary
+ * @param dictionary a vector of string containing the entries of the dictionary
+ * @param word a string containing the word to find
  * @details based on https://fr.wikipedia.org/wiki/Recherche_dichotomique#%C3%89criture_it%C3%A9rative
- * @return
+ * @return an unsigned integer representing the index of the word in the dictionary or size_t(-1) otherwise
  */
 size_t rechercheDichotomique(const std::vector<std::string> &dictionary, const std::string &word);
 
+/**
+ * Search using binary search if a word is contained inside a dictionary
+ * @param begin an iterator pointing to the beginning of the vector
+ * @param end an iterator pointing to the end of the vector
+ * @param word a string containing the word to find
+ * @return an iterator at the index of the word in the dictionary or end otherwise
+ */
 std::vector<std::string>::iterator rechercheDichotomique(std::vector<std::string>::iterator begin,
         std::vector<std::string>::iterator end , const std::string &word);
 
+
+/**
+ * Search recursively using binary search if a word is contained inside a dictionary in an interval [a,b)
+ * @param dictionary a vector of string containing the entries of the dictionary
+ * @param word a string containing the word to find
+ * @return true if the word is in the array, false otherwise
+ */
 bool rechercheDichotomiqueRecursive(const std::vector<std::string> &dictionary, const std::string &word);
 
+
+/**
+ * Search recursively using binary search if a word is contained inside a dictionary in an interval [a,b)
+ * @param begin an iterator pointing to the beginning of the interval
+ * @param end an iterator pointing to the end of the interval
+ * @param word a string containing the word to find
+ * @return true if the word is in the array, false otherwise
+ */
 bool rechercheDichotomiqueRecursive(std::vector<std::string>::iterator begin,
         std::vector<std::string>::iterator end , const std::string &word);
 

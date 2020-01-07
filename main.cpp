@@ -22,6 +22,6 @@ int main() {
                         "Kilo", "Lima", "Mike", "Novembe", "Osca", "Papa", "Quebec", "Romeo", "Sierra", "Tango",
                         "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"};
     string a = "Whiskey";
-    cout << rechercheDichotomique(test, a);
+    cout << (test.end()-rechercheDichotomique(test.begin(), test.end(), "Bravo"));
     return 0;
 }

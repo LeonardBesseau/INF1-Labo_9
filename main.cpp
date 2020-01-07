@@ -67,7 +67,7 @@ void testInversion() {
     cout << (!error ? "Inversion OK " : "Error") << endl;
 }
 
-void testBubbleSort() {
+void testSort() {
     const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha", "sierra", "delta", "uniform",
                                        "yankee", "tango", "echo", "lima", "xray", "victor", "bravo", "romeo", "zulu",
                                        "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
@@ -88,12 +88,27 @@ void testBubbleSort() {
         }
     }
     cout << (!error ? "BubbleSort OK " : "Error") << endl;
+
+    test = NATO_SHUFFLED;
+    mergeSort(test);
+
+    error = false;
+    for (int i = 0; i < NATO.size(); ++i) {
+        if (test.at(i) != NATO.at(i)) {
+            cout << "Error Inversion Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
+            error = true;
+        }
+    }
+    cout << (!error ? "MergeSort OK " : "Error") << endl;
+
 }
 
 int main() {
     testReadingFile();
     testInversion();
-    testBubbleSort();
+    testSort();
+    //   vector<string> test = readFileByLine("/home/leonard/Downloads/dictionary.txt");
+    //  mergeSort(test);
     /*
     std::cout << "Hello, World!" << std::endl;
     vector<string> test{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",

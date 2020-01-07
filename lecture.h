@@ -48,4 +48,7 @@ void inverseList(std::vector<std::string> &dictionary);
  */
 void bubbleSort(std::vector<std::string> &dictionary);
 
+
+void mergeSort(std::vector<std::string> &dictionary);
+
 #endif //LABO_9_LECTURE_H

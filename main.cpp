@@ -12,8 +12,8 @@ Compilateur : g++ 7.4.0
 
 --------------------------- */
 #include <iostream>
+#include "lecture.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+
 }

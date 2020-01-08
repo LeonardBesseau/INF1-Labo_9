@@ -18,6 +18,7 @@ Compilateur : g++ 7.4.0
 #ifndef LABO_9_UTILS_H
 #define LABO_9_UTILS_H
 
+#include <vector>
 #include <string>
 
 /**
@@ -27,5 +28,12 @@ Compilateur : g++ 7.4.0
  */
 void swap(std::string &a, std::string &b);
 
+/**
+ * Merge two vector into one with the elements in order
+ * @param v1 the first vector of string to merge
+ * @param v2 the second vector of string to merge
+ * @return a vector of string containing all the elements of the two in croissant order
+ */
+std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const std::vector<std::string> &v2);
 
 #endif //LABO_9_UTILS_H

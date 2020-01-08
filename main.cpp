@@ -29,7 +29,7 @@ void testReadingFile() {
     bool error = false;
     for (int i = 0; i < NATO.size(); ++i) {
         if (test.at(i) != NATO.at(i)) {
-            cout << "Error Inversion Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
+            cout << "Error readingFile Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
             error = true;
         }
     }
@@ -83,7 +83,7 @@ void testSort() {
     bool error = false;
     for (int i = 0; i < NATO.size(); ++i) {
         if (test.at(i) != NATO.at(i)) {
-            cout << "Error Inversion Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
+            cout << "Error BubbleSort Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
             error = true;
         }
     }
@@ -95,18 +95,47 @@ void testSort() {
     error = false;
     for (int i = 0; i < NATO.size(); ++i) {
         if (test.at(i) != NATO.at(i)) {
-            cout << "Error Inversion Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
+            cout << "Error MergeSort Test at index " << i << " element " << test.at(i) << " != " << NATO.at(i) << endl;
             error = true;
         }
     }
     cout << (!error ? "MergeSort OK " : "Error") << endl;
+}
 
+void testLinear(){
+    vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha", "sierra", "delta", "uniform",
+                                       "yankee", "tango", "echo", "lima", "xray", "victor", "bravo", "romeo", "zulu",
+                                       "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
+                                       "whiskey"};
+    const vector<string> NATO{"alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india",
+                              "juliet", "kilo", "lima", "mike", "november", "oscar", "papa", "quebec", "romeo",
+                              "sierra", "tango", "uniform", "victor", "whiskey", "xray", "yankee", "zulu"};
+    const vector<string> wordTest {"alpha", "al","a", "alpa","kilo","rover","zuluR"};
+    const size_t NOT_FOUND = size_t (-1);
+    const vector<size_t> WORD_TEST_INDEX_ORDERED {0, NOT_FOUND, NOT_FOUND, NOT_FOUND, 10, NOT_FOUND, NOT_FOUND};
+    const vector<size_t> WORD_TEST_INDEX_UNORDERED {4, NOT_FOUND, NOT_FOUND, NOT_FOUND, 0, NOT_FOUND, NOT_FOUND};
+
+    bool  error = false;;
+
+    for (size_t i = 0; i < wordTest.size(); ++i){
+        if( rechercheLineaire(NATO_SHUFFLED, wordTest.at(i)) != WORD_TEST_INDEX_UNORDERED.at(i)){
+            cout << "Error linear unordered Test at index " << i <<endl;
+            error = true;
+        }
+        if( rechercheLineaire(NATO, wordTest.at(i)) != WORD_TEST_INDEX_ORDERED.at(i)){
+            cout << "Error linear ordered Test at index " << i <<endl;
+            error = true;
+        }
+    }
+
+    cout << (!error ? "LinearSort OK " : "Error") << endl;
 }
 
 int main() {
     testReadingFile();
     testInversion();
     testSort();
+    testLinear();
     //   vector<string> test = readFileByLine("/home/leonard/Downloads/dictionary.txt");
     //  mergeSort(test);
     /*

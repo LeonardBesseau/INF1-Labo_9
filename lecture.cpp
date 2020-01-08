@@ -19,7 +19,7 @@ Compilateur : g++ 7.4.0
 
 using namespace std;
 
-vector<string> mergeVectors(const vector<string> &v1, const vector<string> &v2);
+
 
 vector<string> readFileByLine(const string &filename) {
     vector<string> file;
@@ -75,27 +75,3 @@ void mergeSort(vector<string> &dictionary) {
 
 }
 
-vector<string> mergeVectors(const vector<string> &v1, const vector<string> &v2) {
-    vector<string> output;
-    output.reserve(v1.size()+v2.size()); // reserve enough space
-    size_t indexV1 = 0;
-    size_t indexV2 = 0;
-    for (;;) {
-        if (v1.at(indexV1) < v2.at(indexV2)){
-            output.push_back(v1.at(indexV1));
-            ++indexV1;
-            if(indexV1 >= v1.size()){
-                output.insert(output.end(), v2.begin()+indexV2, v2.end());
-                return output;
-            }
-        }else{
-
-            output.push_back(v2.at(indexV2));
-            ++indexV2;
-            if(indexV2 >= v2.size()){
-                output.insert(output.end(), v1.begin()+indexV1, v1.end());
-                return output;
-            }
-        }
-    }
-}

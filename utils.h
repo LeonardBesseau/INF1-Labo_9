@@ -20,6 +20,7 @@ Compilateur : g++ 7.4.0
 
 #include <vector>
 #include <string>
+#include <lecture.h>
 
 /**
  * Swap two element between themselves
@@ -35,5 +36,11 @@ void swap(std::string &a, std::string &b);
  * @return a vector of string containing all the elements of the two in croissant order
  */
 std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const std::vector<std::string> &v2);
+
+/**
+ * Order a list alphabetically (by inverting or ordering it if needed)
+ * @param list a vector of string containing a list of word
+ */
+void formatListAlphabetically(std::vector<std::string> &list);
 
 #endif //LABO_9_UTILS_H

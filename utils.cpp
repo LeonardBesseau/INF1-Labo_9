@@ -18,7 +18,15 @@ Compilateur : g++ 7.4.0
 #include "utils.h"
 #include <string>
 
+
 using namespace std;
+
+/**
+ * Verify in which order a list is sorted
+ * @param list a vector of string containing a list of word
+ * @return 0 if the list is sorted alphabetically, 1 if the list is inverted, 2 if the list is shuffled
+ */
+int checkIfSorted(const vector<string> &list);
 
 void swap(string &a, string &b){
     string temp = a;
@@ -48,5 +56,35 @@ vector<string> mergeVectors(const vector<string> &v1, const vector<string> &v2) 
                 return output;
             }
         }
+    }
+}
+
+int checkIfSorted(const vector<string> &list){
+    int listState = 0; // 0 for in order, 1 for backwards, 2 for shuffled
+    for(size_t i = 1; i < list.size(); ++i){
+        string a = list.at(i - 1);
+        string b = list.at(i);
+        if(list.at(i - 1) > list.at(i) && list.at(i) != ""){
+            listState = 1;
+        }else{
+            if(listState == 1 && list.at(i) != ""){
+                listState = 2;
+                break;
+            }
+        }
+    }
+    return listState;
+}
+
+void formatListAlphabetically(std::vector<std::string> &list){
+    switch (checkIfSorted(list)){
+        case 1:
+            inverseList(list);
+            break;
+        case 2:
+            mergeSort(list);
+            break;
+        default:
+            break;
     }
 }

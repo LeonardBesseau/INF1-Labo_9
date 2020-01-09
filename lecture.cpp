@@ -72,6 +72,5 @@ void mergeSort(vector<string> &dictionary) {
         high.at(0) =dictionary.at(middle);
     }
     dictionary=mergeVectors(low,high);
-
 }
 

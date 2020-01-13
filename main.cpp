@@ -21,9 +21,11 @@ Compilateur : g++ 7.4.0
 
 using namespace std;
 
+// Test dictionaries
 const vector<string> NATO_WITH_MAJ{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",
                                    "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
                                    "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"};
+
 const vector<string> NATO_WITHOUT_MAJ{"alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india",
                                       "juliet", "kilo", "lima", "mike", "november", "oscar", "papa", "quebec", "romeo",
                                       "sierra", "tango", "uniform", "victor", "whiskey", "xray", "yankee", "zulu"};
@@ -31,17 +33,15 @@ const vector<string> NATO_WITHOUT_MAJ{"alpha", "bravo", "charlie", "delta", "ech
 const vector<string> OTAN{"Zulu", "Yankee", "Xray", "Whiskey", "Victor", "Uniform", "Tango", "Sierra", "Romeo",
                           "Quebec", "Papa", "Oscar", "November", "Mike", "Lima", "Kilo", "Juliet", "India", "Hotel",
                           "Golf", "Foxtrot", "Echo", "Delta", "Charlie", "Bravo", "Alpha"};
-const vector<string> OTAN_WITHOUT_MAJ{"zulu", "yankee", "xray", "whiskey", "victor", "uniform", "tango", "sierra",
-                                      "romeo",
-                                      "quebec", "papa", "oscar", "november", "mike", "lima", "kilo", "juliet", "india",
-                                      "hotel",
-                                      "golf", "foxtrot", "echo", "delta", "charlie", "bravo", "alpha"};
 
 const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha", "sierra", "delta", "uniform",
                                    "yankee", "tango", "echo", "lima", "xray", "victor", "bravo", "romeo", "zulu",
                                    "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
                                    "whiskey"};
 
+/**
+ * Test function for reading a file from disk and creating of vector of string from its contents
+ */
 void testReadingFile() {
     vector<string> test = readFileByLine("/home/leonard/Downloads/nato.txt");
     bool error = false;
@@ -56,6 +56,9 @@ void testReadingFile() {
     cout << (!error ? "Reading from file OK " : "Error") << endl;
 }
 
+/**
+ * Test function for inverting the order of the element in a vector of string
+ */
 void testInversion() {
     vector<string> v1 = NATO_WITH_MAJ;
     vector<string> v2 = OTAN;
@@ -79,6 +82,9 @@ void testInversion() {
     cout << (!error ? "Inversion OK " : "Error") << endl;
 }
 
+/**
+ * Test function for sorting a vector of string using bubbleSort and mergeSort
+ */
 void testSort() {
     vector<string> test = NATO_SHUFFLED;
 
@@ -108,6 +114,9 @@ void testSort() {
     cout << (!error ? "MergeSort OK " : "Error") << endl;
 }
 
+/**
+ * Test function for finding a string in a vector of string linearly (with and without iterators)
+ */
 void testLinear() {
     const vector<string> wordTest{"alpha", "al", "a", "alpa", "kilo", "rover", "zuluR"};
     const size_t NOT_FOUND = size_t(-1);
@@ -135,6 +144,9 @@ void testLinear() {
     cout << (!error ? "LinearSort OK " : "Error") << endl;
 }
 
+/**
+ * Test function for finding a string in a vector of string using binary search (iteratively and recursively)
+ */
 void testDichotomique() {
     const vector<string> wordTest{"alpha", "al", "a", "alpa", "kilo", "rover", "zuluR"};
     const size_t NOT_FOUND = size_t(-1);
@@ -193,8 +205,8 @@ int main() {
     testLinear();
     testDichotomique();
 
-    const string PATH = "/home/leonard/Downloads/dictionary.txt";
-    const string WORD = "";
-    cout << findWord(PATH, "zip")<<endl;
+    const string PATH = "/home/dictionary.txt";
+    const string WORD = "zip";
+    cout << findWord(PATH, "word")<<endl;
     return 0;
 }

@@ -155,17 +155,23 @@ void testDichotomique() {
             error = true;
         }
     }
-    bool test = NATO_WITHOUT_MAJ.begin() ==
-                rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "alpha");
-    bool test1 = NATO_WITHOUT_MAJ.end() ==
-                 rechercheDichotomique(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "al");
+    bool validIteratorSearch = NATO_WITHOUT_MAJ.begin() ==
+                               rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "alpha");
+    bool validIteratorSearchB = NATO_WITHOUT_MAJ.begin()+4 ==
+                               rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "echo");
+    bool invalidIteratorSearchLower = NATO_WITHOUT_MAJ.end() ==
+                                      rechercheDichotomique(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "al");
+    bool invalidIteratorSearchUpper = NATO_WITHOUT_MAJ.end() ==
+                                      rechercheDichotomique(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "zulur");
     bool test2 = rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "alpha");
     bool test3 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "al");
     bool test4 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "zuluR");
-    if (!test || !test1) {
+    bool test5 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "zula");
+    bool test6 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "");
+    if (!validIteratorSearch || !invalidIteratorSearchLower || !invalidIteratorSearchUpper) {
         cout << "Error dichotomique Test" << endl;
     }
-    if (!test2 || !test3 || !test4) {
+    if (!test2 || !test3 || !test4|| !test5 || !test6) {
         cout << "Error dichotomique recursive Test" << endl;
     }
 
@@ -176,40 +182,19 @@ void testDichotomique() {
 size_t findWord(const string &path, const string &word) {
     vector<string> dictionary = readFileByLine(path);
     formatListAlphabetically(dictionary);
+    cout << "dictionnary size "<<dictionary.size()<<endl;
     return rechercheDichotomique(dictionary, word);
 }
 
 int main() {
-    vector<string> test = readFileByLine("/home/leonard/Downloads/nato_shuffled.txt");
-
     testReadingFile();
     testInversion();
     testSort();
     testLinear();
     testDichotomique();
-    //   vector<string> test = readFileByLine("/home/leonard/Downloads/dictionary.txt");
-    //  mergeSort(test);
-    /*
-    std::cout << "Hello, World!" << std::endl;
-    vector<string> test{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet",
-                        "Kilo", "Lima", "Mike", "Novembe", "Osca", "Papa", "Quebec", "Romeo", "Sierra", "Tango",
-                        "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"};
-    vector<string> test_shuffled{"kilo", "golf", "novembe", "charlie", "alpha", "sierra", "delta", "uniform", "yankee",
-                                 "tango", "echo", "lima", "xray", "victo", "bravo", "romeo", "zulu", "hotel", "mike",
-                                 "juliet", "quebec", "foxtrot", "india", "osca", "papa", "whiskey"};
-    vector<string> b = readFileByLine("/home/leonard/Downloads/nato.txt");
-    bubbleSort(test_shuffled);
-    inverseList(test);
-    string a = "Whiskey";
-    for (int i = 0; i < test.size(); ++i) {
-        cout << test_shuffled.at(i) << " " << rechercheLineaire(test_shuffled, test_shuffled.at(i)) << endl;
-    }
-    cout << endl;
-    for (int i = 0; i < test.size(); ++i) {
-        cout << test_shuffled.at(i) << " " << 26 - (test_shuffled.end() -
-                                                    rechercheLineaire(test_shuffled.begin(), test_shuffled.end(),
-                                                                      test_shuffled.at(i))) << endl;
-    }
-*/
+
+    const string PATH = "/home/leonard/Downloads/dictionary.txt";
+    const string WORD = "";
+    cout << findWord(PATH, "zip")<<endl;
     return 0;
 }

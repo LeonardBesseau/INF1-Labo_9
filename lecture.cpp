@@ -28,6 +28,11 @@ vector<string> readFileByLine(const string &filename) {
     while (!inputFile.eof()) {
         string line;
         getline(inputFile, line);
+        size_t lineSize = line.size();
+        // if file encoded as windows and on linux
+        if (lineSize && line.at(lineSize-1) == '\r'){
+            line.resize(line.size()-1);
+        }
         file.push_back(line);
     }
     inputFile.close();

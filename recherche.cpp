@@ -82,7 +82,7 @@ vector<string>::const_iterator rechercheDichotomique(vector<string>::const_itera
 
     vector<string>::const_iterator output = end;
 
-    while (begin <= end) {
+    while (begin < end) {
         size_t size = distance(begin, end); // size of the list
         size_t decal = size / 2;
         vector<string>::const_iterator middle = begin + decal;

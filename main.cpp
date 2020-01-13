@@ -181,7 +181,7 @@ void testDichotomique() {
     bool test4 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "zuluR");
     bool test5 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "zula");
     bool test6 = !rechercheDichotomiqueRecursive(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "");
-    if (!validIteratorSearch || !invalidIteratorSearchLower || !invalidIteratorSearchUpper) {
+    if (!validIteratorSearch || !invalidIteratorSearchLower || !invalidIteratorSearchUpper || !validIteratorSearchB) {
         cout << "Error dichotomique Test" << endl;
     }
     if (!test2 || !test3 || !test4|| !test5 || !test6) {
@@ -212,7 +212,7 @@ int main() {
     testDichotomique();
 
     const string PATH = "/home/leonard/Downloads/dictionary.txt";
-    const string WORD = "zz";
+    const string WORD = "knapsacked";
     cout <<"word " <<(findWord(PATH, WORD)? "found":"not found")<<endl;
     return 0;
 }

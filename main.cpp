@@ -191,12 +191,17 @@ void testDichotomique() {
     cout << (!error ? "dichotomique OK " : "Error") << endl;
 }
 
-
-size_t findWord(const string &path, const string &word) {
+/**
+ * Find if a word is present in a file
+ * @param path a string containing the path to the file
+ * @param word a string containing the word to find
+ * @return true if the word is present, false otherwise
+ */
+bool findWord(const string &path, const string &word) {
     vector<string> dictionary = readFileByLine(path);
     formatListAlphabetically(dictionary);
     cout << "dictionnary size "<<dictionary.size()<<endl;
-    return rechercheDichotomique(dictionary, word);
+    return rechercheDichotomique(dictionary, word)!= size_t(-1);
 }
 
 int main() {
@@ -207,7 +212,7 @@ int main() {
     testDichotomique();
 
     const string PATH = "/home/leonard/Downloads/dictionary.txt";
-    const string WORD = "zip";
-    cout << findWord(PATH, "word")<<endl;
+    const string WORD = "zz";
+    cout <<"word " <<(findWord(PATH, WORD)? "found":"not found")<<endl;
     return 0;
 }

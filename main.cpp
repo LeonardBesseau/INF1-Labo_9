@@ -43,10 +43,10 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
  * Test function for reading a file from disk and creating of vector of string from its contents
  */
 void testReadingFile() {
-    vector<string> test = readFileByLine("/home/nato.txt");
+    vector<string> test = readFileByLine("/home/leonard/Downloads/nato.txt");
     bool error = false;
     // Check if word read from file are the same as the test dictionary
-    for (int i = 0; i < NATO_WITH_MAJ.size(); ++i) {
+    for (size_t i = 0; i < NATO_WITH_MAJ.size(); ++i) {
         if (test.at(i) != NATO_WITH_MAJ.at(i)) {
             cout << "Error readingFile Test at index " << i << " element " << test.at(i) << " != "
                  << NATO_WITH_MAJ.at(i)
@@ -69,7 +69,7 @@ void testInversion() {
 
     bool error = false;
 
-    for (int i = 0; i < NATO_WITH_MAJ.size(); ++i) {
+    for (size_t i = 0; i < NATO_WITH_MAJ.size(); ++i) {
         if (v1.at(i) != OTAN.at(i)) {
             cout << "Error Inversion Test at index " << i << " element " << v1.at(i) << " != " << OTAN.at(i) << endl;
             error = true;
@@ -92,7 +92,7 @@ void testSort() {
     bubbleSort(test);
 
     bool error = false;
-    for (int i = 0; i < NATO_WITHOUT_MAJ.size(); ++i) {
+    for (size_t i = 0; i < NATO_WITHOUT_MAJ.size(); ++i) {
         if (test.at(i) != NATO_WITHOUT_MAJ.at(i)) {
             cout << "Error BubbleSort Test at index " << i << " element " << test.at(i) << " != " << NATO_WITH_MAJ.at(i)
                  << endl;
@@ -105,7 +105,7 @@ void testSort() {
     mergeSort(test);
 
     error = false;
-    for (int i = 0; i < NATO_WITHOUT_MAJ.size(); ++i) {
+    for (size_t i = 0; i < NATO_WITHOUT_MAJ.size(); ++i) {
         if (test.at(i) != NATO_WITHOUT_MAJ.at(i)) {
             cout << "Error MergeSort Test at index " << i << " element " << test.at(i) << " != " << NATO_WITH_MAJ.at(i)
                  << endl;
@@ -206,7 +206,7 @@ int main() {
     testLinear();
     testDichotomique();
 
-    const string PATH = "/home/dictionary.txt";
+    const string PATH = "/home/leonard/Downloads/dictionary.txt";
     const string WORD = "zip";
     cout << findWord(PATH, "word")<<endl;
     return 0;

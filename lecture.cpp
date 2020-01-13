@@ -25,9 +25,12 @@ vector<string> readFileByLine(const string &filename) {
     vector<string> file;
     ifstream inputFile;
     inputFile.open(filename);
+
+    // Check if file is valid and present
     if(!inputFile.good()){
         return file;
     }
+
     while (!inputFile.eof()) {
         string line;
         getline(inputFile, line);

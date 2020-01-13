@@ -43,8 +43,9 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
  * Test function for reading a file from disk and creating of vector of string from its contents
  */
 void testReadingFile() {
-    vector<string> test = readFileByLine("/home/leonard/Downloads/nato.txt");
+    vector<string> test = readFileByLine("/home/nato.txt");
     bool error = false;
+    // Check if word read from file are the same as the test dictionary
     for (int i = 0; i < NATO_WITH_MAJ.size(); ++i) {
         if (test.at(i) != NATO_WITH_MAJ.at(i)) {
             cout << "Error readingFile Test at index " << i << " element " << test.at(i) << " != "

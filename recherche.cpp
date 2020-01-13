@@ -55,6 +55,9 @@ size_t rechercheDichotomique(const vector<string> &dictionary, const string &wor
     size_t start = 0;
     size_t end = dictionary.size() - 1;
     size_t output = size_t(-1);
+    if(dictionary.empty()){
+        return output;
+    }
 
     while (start <= end) {
         size_t middle = (start + end) / 2;

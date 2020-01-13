@@ -211,7 +211,7 @@ int main() {
     testLinear();
     testDichotomique();
 
-    const string PATH = "/home/leonard/Downloads/dictionary.txt";
+    const string PATH = "/home/dictionary.txt";
     const string WORD = "knapsacked";
     cout <<"word " <<(findWord(PATH, WORD)? "found":"not found")<<endl;
     return 0;

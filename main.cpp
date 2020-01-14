@@ -47,7 +47,7 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
                                    "whiskey"};
 
 // Current directory
-const string PWD = "/home/leonard/CLionProjects/Labo_9/";
+const string PWD = "C:\\Users\\gaeta\\Documents\\HEIGVD\\INF1\\Labo_9";
 
 
 void formatListAlphabetically(std::vector<std::string> &list) {
@@ -237,8 +237,19 @@ bool findWord(const string &path, const string &word) {
 }
 
 int main() {
-    string test = "aas-ss    r-akdh, 36378eu6s78duh2ns7e278oditgfikmcvhz nd78aopxl,jcsazdcujmewugdbc jgsdhzdjxjwhdkdi9u";
-    cout << normaliseString(test);
+    string test1 = "\"You will excuse this mask,\" continued our strange visitor. \"The ";
+    string test = normaliseString(test1);
+    vector<string> testVect;
+    testVect.push_back(test);
+    cout << testVect.at(0);
+    vector<vector<string>> blabla = readWordByLine(testVect);
+    cout << "[";
+    for (auto bla : blabla) {
+        for (auto bl : bla) {
+            cout << bl << "|";
+        }
+    }
+    cout << "]";
     string a;
 /*
     const string PATH = PWD + "dictionary.txt";

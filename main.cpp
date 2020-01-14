@@ -59,12 +59,12 @@ bool findMissingWord(const string &pathDictionary, const string &word) {
 }
 
 int main() {
-    string test1 = "\"You will excuse this mask,\" continued our strange visitor. \"The ";
-    string test = normaliseString(test1);
-    vector<string> testVect;
-    testVect.push_back(test);
-    cout << testVect.at(0);
-    vector<vector<string>> blabla = readWordByLine(testVect);
+    vector<string> testVectorA;
+    string test1 = "\"You see, Watson,\" he explained in the early hours of the morning";
+    string test2 =  "as we sat over a glass of whisky and soda in Baker Street, \"it";
+    testVectorA.push_back(normaliseString(test1));
+    testVectorA.push_back(normaliseString(test2));
+    vector<vector<string>> blabla = readWordByLine(testVectorA);
     cout << "[";
     for (auto bla : blabla) {
         for (auto bl : bla) {

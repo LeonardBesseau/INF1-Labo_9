@@ -46,10 +46,10 @@ vector<string> readFileByLine(const string &filename) {
 vector<vector<string>> readWordByLine(vector<string> &lines) {
     vector<vector<string>> separatedLines;
     vector<string> tempLine;
-    auto i = lines.at(0).begin();
     for(auto line : lines) {
+        auto i = line.begin();
         tempLine.clear();
-        while(i != line.end()) {
+        while(i != line.end()+1) {
             auto b = find(i, line.end(), ' ');
             tempLine.emplace_back(i, b);
             i = ++b;

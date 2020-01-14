@@ -19,6 +19,7 @@ Compilateur : g++ 7.4.0
 #include "lecture.h"
 #include "utils.h"
 
+
 using namespace std;
 
 /**
@@ -38,6 +39,8 @@ void formatListAlphabetically(std::vector<std::string> &list) {
             break;
         case 2:
             mergeSort(list);
+            // takes 3 times longer than sort
+            // sort(list.begin(), list.end());
             break;
         default:
             break;
@@ -60,6 +63,7 @@ void findMissingWord(const string &pathDictionary, const string &pathBook) {
     }
 
     formatListAlphabetically(dictionary);
+
     vector<string> book = readFileByLine(pathBook);
     const vector<vector<string>> words = readWordByLine(book);
     vector<vector<string>> wordsNormalized = words;
@@ -76,7 +80,7 @@ void findMissingWord(const string &pathDictionary, const string &pathBook) {
             size_t position = rechercheDichotomique(dictionary, wordsNormalized.at(i).at(j));
             if (MAX == position) {
                 string missing = to_string(i);
-                missing += " : " + words.at(i).at(j) + " p " + to_string(position);
+                missing += " : " + words.at(i).at(j);
                 cout << missing << endl;
                 tttt.push_back(missing);
             }
@@ -88,19 +92,6 @@ void findMissingWord(const string &pathDictionary, const string &pathBook) {
 }
 
 int main() {
-    const string PATH = PWD + "dictionary.txt";
-    const string WORD = "knapsacked";
-
-
-    string test = "test test1 test2";
-    string test1 = "test3 test4 test5";
-    vector<string> a;
-    a.push_back(test);
-    a.push_back(test1);
-    vector<vector<string>> c = readWordByLine(a);
-    string b;
-
-
     string dict = PWD + "dictionary.txt";
     string input = PWD + "input_sh.txt";
     findMissingWord(dict, input);
@@ -110,3 +101,6 @@ int main() {
     */
     return 0;
 }
+// 2720524 with mergeSort and our merge
+// 1840764 with mergeSort and algorithm merge | 1.47 times faster
+// 965076 with sort | 2.8 times faster

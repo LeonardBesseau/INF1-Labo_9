@@ -35,9 +35,10 @@ vector<string> readFileByLine(const string &filename) {
         if (lineSize && line.at(lineSize - 1) == '\r') {
             line.resize(line.size() - 1);
         }
-        if (!line.empty()) {
-            file.push_back(line);
-        }
+        // TODO Ask if remove empty line is valid
+        //   if (!line.empty()) {
+        file.push_back(line);
+        //    }
     }
     inputFile.close();
     return file;
@@ -45,23 +46,12 @@ vector<string> readFileByLine(const string &filename) {
 
 vector<vector<string>> readWordByLine(vector<string> &lines) {
     vector<vector<string>> separatedLines;
-    vector<string> tempLine;
-    for (auto line : lines) {
-        tempLine.clear();
-        string::iterator i = line.begin();
-        // +1 because we take the element after the iterator
-        while (i != line.end() + 1) {
-            string::iterator b = find(i, line.end(), ' ');
-            if (distance(i, b)) {
-                tempLine.emplace_back(i, b);
-            }
-            i = b + 1;
-        }
-        separatedLines.push_back(tempLine);
+    separatedLines.reserve(lines.size());
+    for (const string &line : lines) {
+        separatedLines.push_back(split(line));
     }
     return separatedLines;
 }
-
 
 
 void inverseList(vector<string> &dictionary) {
@@ -101,6 +91,9 @@ void mergeSort(vector<string> &dictionary) {
     } else {
         high.at(0) = dictionary.at(middle);
     }
-    dictionary = mergeVectors(low, high);
+    merge(low.begin(), low.end(), high.begin(), high.end(), dictionary.begin());
+    // TODO do we keep old version in commentary and explain why they have been replaced ?
+    // merge is 1.5 times faster
+    //dictionary = mergeVectors(low, high);
 }
 

@@ -42,12 +42,16 @@ std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const 
 int checkIfSorted(const std::vector<std::string> &list);
 
 /**
- * transform a string into a lowercase string with only alphabetical, ' and space remaining
+ * transform a string into a lowercase string with only alphabetical and '
  * @param s a string to normalize
  * @return the normalized string
  */
 std::string &normaliseString(std::string &s);
 
-
-
+/**
+ * Split a line into words. Words are strings composed of [a-zA-Z] characters and '
+ * @param line
+ * @return
+ */
+std::vector<std::string> split(const std::string &line);
 #endif //LABO_9_UTILS_H

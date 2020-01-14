@@ -50,7 +50,7 @@ vector<vector<string>> readWordByLine(vector<string> &lines) {
     for(auto line : lines) {
         tempLine.clear();
         while(i != line.end()) {
-            auto b = find(i, line.end(), " ");
+            auto b = find(i, line.end(), ' ');
             tempLine.emplace_back(i, b);
             i = ++b;
         }

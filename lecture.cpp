@@ -35,7 +35,9 @@ vector<string> readFileByLine(const string &filename) {
         if (lineSize && line.at(lineSize - 1) == '\r') {
             line.resize(line.size() - 1);
         }
-        file.push_back(line);
+        if (!line.empty()) {
+            file.push_back(line);
+        }
     }
     inputFile.close();
     return file;

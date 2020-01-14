@@ -46,6 +46,8 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
                                    "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
                                    "whiskey"};
 
+const string PWD = "/home/leonard/CLionProjects/Labo_9/";
+
 
 void formatListAlphabetically(std::vector<std::string> &list) {
     switch (checkIfSorted(list)) {
@@ -64,7 +66,7 @@ void formatListAlphabetically(std::vector<std::string> &list) {
  * Test function for reading a file from disk and creating of vector of string from its contents
  */
 void testReadingFile() {
-    vector<string> test = readFileByLine("nato.txt");
+    vector<string> test = readFileByLine(PWD + "nato.txt");
     bool error = false;
     // Check if word read from file are the same as the test dictionary
     if (NATO_WITHOUT_MAJ.size() == test.size()) {
@@ -240,7 +242,7 @@ int main() {
     testLinear();
     testDichotomique();
 
-    const string PATH = "/dictionary.txt";
+    const string PATH = PWD + "dictionary.txt";
     const string WORD = "knapsacked";
     cout << "word " << (findWord(PATH, WORD) ? "found" : "not found") << endl;
     return 0;

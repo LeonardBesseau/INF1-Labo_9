@@ -56,7 +56,7 @@ vector<vector<string>> readWordByLine(vector<string> &lines) {
         }
         separatedLines.push_back(tempLine);
     }
-
+    return separatedLines;
 }
 
 

@@ -28,7 +28,7 @@ using namespace std;
 void formatListAlphabetically(vector<string> &list);
 
 // Current directory
-const string PWD = "C:\\Users\\gaeta\\Documents\\HEIGVD\\INF1\\Labo_9";
+const string PWD = "/home/leonard/CLionProjects/Labo_9/";
 
 
 void formatListAlphabetically(std::vector<std::string> &list) {
@@ -45,27 +45,67 @@ void formatListAlphabetically(std::vector<std::string> &list) {
 }
 
 /**
- * Find if a word is present in a file
+ * Get a list all word not present in dictionary
  * @param pathDictionary a string containing the path to the file
- * @param word a string containing the word to find
- * @return true if the word is present, false otherwise
+ * @param pathBook a string containing the path to the file
  */
-bool findMissingWord(const string &pathDictionary, const string &word) {
+void findMissingWord(const string &pathDictionary, const string &pathBook) {
+    const size_t MAX = size_t(-1);
+
     vector<string> dictionary = readFileByLine(pathDictionary);
+
+    //normalize before sorting otherwise won't work
+    for (string &s : dictionary) {
+        normaliseString(s);
+    }
+
     formatListAlphabetically(dictionary);
-    normaliseVector(dictionary);
+    vector<string> book = readFileByLine(pathBook);
+    const vector<vector<string>> words = readWordByLine(book);
+    vector<vector<string>> wordsNormalized = words;
+    for (vector<string> &v : wordsNormalized) {
+        for (string &s : v) {
+            normaliseString(s);
+        }
+    }
+    vector<string> tttt;
+
+
+    for (std::size_t i = 0; i < wordsNormalized.size(); ++i) {
+        for (size_t j = 0; j < wordsNormalized.at(i).size(); ++j) {
+            size_t position = rechercheDichotomique(dictionary, wordsNormalized.at(i).at(j));
+            if (MAX == position) {
+                string missing = to_string(i);
+                missing += " : " + words.at(i).at(j) + " p " + to_string(position);
+                cout << missing << endl;
+                tttt.push_back(missing);
+            }
+        }
+    }
     cout << "dictionnary size " << dictionary.size() << endl;
-    return rechercheDichotomique(dictionary, word) != size_t(-1);
+    cout << "missing size " << tttt.size() << endl;
+
 }
 
 int main() {
-    string test = "test test1 test2";
-    vector<string> a;
-    a.push_back(test);
-    readWordByLine(a);
-/*
     const string PATH = PWD + "dictionary.txt";
     const string WORD = "knapsacked";
+
+
+    string test = "test test1 test2";
+    string test1 = "test3 test4 test5";
+    vector<string> a;
+    a.push_back(test);
+    a.push_back(test1);
+    vector<vector<string>> c = readWordByLine(a);
+    string b;
+
+
+    string dict = PWD + "dictionary.txt";
+    string input = PWD + "input_sh.txt";
+    findMissingWord(dict, input);
+/*
+
     cout << "word " << (findWord(PATH, WORD) ? "found" : "not found") << endl;
     */
     return 0;

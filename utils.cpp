@@ -63,8 +63,6 @@ vector<string> mergeVectors(const vector<string> &v1, const vector<string> &v2) 
 int checkIfSorted(const vector<string> &list) {
     int listState = 0; // 0 for in order, 1 for backwards, 2 for shuffled
     for (size_t i = 1; i < list.size(); ++i) {
-        string a = list.at(i - 1);
-        string b = list.at(i);
         if (!list.at(i).empty()) {
             if (list.at(i - 1) > list.at(i)) {
                 listState = 1;
@@ -83,14 +81,9 @@ bool isInvalidChar(char c) {
     return !isalpha(c) && c != '\'' && c != ' ';
 }
 
-string normaliseString(string &s) {
+string &normaliseString(string &s) {
     s.erase(remove_if(s.begin(), s.end(), isInvalidChar), s.end());
     transform(s.begin(), s.end(), s.begin(), ::tolower);
-    return s;
-}
-
-vector<string> &normaliseVector(vector<string> &s) {
-    transform(s.begin(), s.end(), s.begin(), normaliseString);
     return s;
 }
 

@@ -17,6 +17,7 @@ Compilateur : g++ 7.4.0
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 /**
  * Swap two element between themselves
@@ -39,6 +40,13 @@ std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const 
  * @return 0 if the list is sorted alphabetically, 1 if the list is inverted, 2 if the list is shuffled
  */
 int checkIfSorted(const std::vector<std::string> &list);
+
+/**
+ * transform a string
+ * @param s
+ * @return
+ */
+std::string &normaliseString(std::string &s);
 
 
 #endif //LABO_9_UTILS_H

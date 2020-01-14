@@ -237,14 +237,13 @@ bool findWord(const string &path, const string &word) {
 }
 
 int main() {
-    testReadingFile();
-    testInversion();
-    testSort();
-    testLinear();
-    testDichotomique();
-
+    string test = "a's ))()";
+    normaliseString(test);
+    string a;
+/*
     const string PATH = PWD + "dictionary.txt";
     const string WORD = "knapsacked";
     cout << "word " << (findWord(PATH, WORD) ? "found" : "not found") << endl;
+    */
     return 0;
 }

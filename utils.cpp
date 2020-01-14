@@ -15,8 +15,9 @@ Compilateur : g++ 7.4.0
 
 --------------------------- */
 
-#include "utils.h"
+
 #include <string>
+#include "utils.h"
 
 
 using namespace std;
@@ -72,3 +73,8 @@ int checkIfSorted(const vector<string> &list) {
     return listState;
 }
 
+string &normaliseString(string &s) {
+    s.erase(remove_if(s.begin(), s.end(), [](char c) { return !isalpha(c) && c != '\''; }), s.end());
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+
+}

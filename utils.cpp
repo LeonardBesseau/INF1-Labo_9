@@ -22,6 +22,12 @@ Compilateur : g++ 7.4.0
 
 using namespace std;
 
+/**
+ * Verify if a char is an invalid character for a word or a phrase (' and space are authorized)
+ * @param c a char to validate
+ * @return false if a valid character, true otherwise
+ */
+bool isInvalidChar(char c);
 
 void swap(string &a, string &b) {
     string temp = a;
@@ -73,12 +79,18 @@ int checkIfSorted(const vector<string> &list) {
     return listState;
 }
 
-bool isValidChar(char c) {
+bool isInvalidChar(char c) {
     return !isalpha(c) && c != '\'' && c != ' ';
 }
 
-string &normaliseString(string &s) {
-    s.erase(remove_if(s.begin(), s.end(), isValidChar), s.end());
+string normaliseString(string &s) {
+    s.erase(remove_if(s.begin(), s.end(), isInvalidChar), s.end());
     transform(s.begin(), s.end(), s.begin(), ::tolower);
     return s;
 }
+
+vector<string> &normaliseVector(vector<string> &s) {
+    transform(s.begin(), s.end(), s.begin(), normaliseString);
+    return s;
+}
+

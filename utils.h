@@ -42,11 +42,19 @@ std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const 
 int checkIfSorted(const std::vector<std::string> &list);
 
 /**
- * transform a string
- * @param s
- * @return
+ * transform a string into a lowercase string with only alphabetical, ' and space remaining
+ * @param s a string to normalize
+ * @return the normalized string
  */
-std::string &normaliseString(std::string &s);
+std::string normaliseString(std::string &s);
+
+/**
+ * transform a vector of string into a lowercase string with only alphabetical, '
+ * and space remaining
+ * @param s a vector of string to normalize
+ * @return the normalize
+ */
+std::vector<std::string> &normaliseVector(std::vector<std::string> &s);
 
 
 #endif //LABO_9_UTILS_H

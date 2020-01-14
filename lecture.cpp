@@ -46,7 +46,6 @@ vector<string> readFileByLine(const string &filename) {
 vector<vector<string>> readWordByLine(vector<string> &lines) {
     vector<vector<string>> separatedLines;
     vector<string> tempLine;
-
     for (auto line : lines) {
         tempLine.clear();
         string::iterator i = line.begin();

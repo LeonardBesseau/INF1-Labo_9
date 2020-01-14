@@ -43,6 +43,23 @@ vector<string> readFileByLine(const string &filename) {
     return file;
 }
 
+vector<vector<string>> readWordByLine(vector<string> &lines) {
+    vector<vector<string>> separatedLines;
+    vector<string> tempLine;
+    auto i = lines.at(0).begin();
+    for(auto line : lines) {
+        tempLine.clear();
+        while(i != line.end()) {
+            auto b = find(i, line.end(), " ");
+            tempLine.emplace_back(i, b);
+            i = ++b;
+        }
+        separatedLines.push_back(tempLine);
+    }
+
+}
+
+
 void inverseList(vector<string> &dictionary) {
     for (size_t start = 0, end = dictionary.size() - 1; start < end; ++start, --end) {
         swap(dictionary.at(start), dictionary.at(end));

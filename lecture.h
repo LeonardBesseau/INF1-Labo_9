@@ -32,6 +32,16 @@ Compilateur : g++ 7.4.0
  */
 std::vector<std::string> readFileByLine(const std::string &filename);
 
+/**
+ * \brief read words of line
+ *
+ * This method read line and separate the words
+ * Add words to a vector of string.
+ *
+ * \param line to separate
+ * \return a vector of vector of string
+ */
+std::vector<std::vector<std::string>> readWordByLine(std::vector<std::string> &lines);
 
 /**
  * Inverse the dictionary

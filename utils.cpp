@@ -4,10 +4,10 @@ Fichier : utils.cpp
 Auteur(s) : Besseau Zwick Austburger
 Date :  07.01.2020
 
-But : Le but de ce laboratoire est d'établir les bases d'un correcteur orthographique.
-Nous nous intéressons particulièrement à la lecture d'un fichier contenant la liste des mots du dictionnaire,
-et à la recherche dans cette liste d'un mot donné ou d'un vector<string> de mots provenant d'un fichier.
-Le progrmme affiche alors si le ou les mots ne sont pas présent dans le dictionnaire.
+But : Methodes supplémentaires. Liste:
+ - Swap string
+ - Merge vectors in place
+ - check how a vector is sorted
 
 Remarque(s) : Fichier non demandé dans la consigne
 
@@ -21,12 +21,6 @@ Compilateur : g++ 7.4.0
 
 using namespace std;
 
-/**
- * Verify in which order a list is sorted
- * @param list a vector of string containing a list of word
- * @return 0 if the list is sorted alphabetically, 1 if the list is inverted, 2 if the list is shuffled
- */
-int checkIfSorted(const vector<string> &list);
 
 void swap(string &a, string &b) {
     string temp = a;
@@ -78,15 +72,3 @@ int checkIfSorted(const vector<string> &list) {
     return listState;
 }
 
-void formatListAlphabetically(std::vector<std::string> &list) {
-    switch (checkIfSorted(list)) {
-        case 1:
-            inverseList(list);
-            break;
-        case 2:
-            mergeSort(list);
-            break;
-        default:
-            break;
-    }
-}

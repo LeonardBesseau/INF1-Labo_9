@@ -4,10 +4,7 @@ Fichier : lecture.cpp
 Auteur(s) : Besseau Zwick Austburger
 Date :  07.01.2020
 
-But : Le but de ce laboratoire est d'établir les bases d'un correcteur orthographique.
-Nous nous intéressons particulièrement à la lecture d'un fichier contenant la liste des mots du dictionnaire,
-et à la recherche dans cette liste d'un mot donné ou d'un vector<string> de mots provenant d'un fichier.
-Le progrmme affiche alors si le ou les mots ne sont pas présent dans le dictionnaire.
+But : Lecture d'un dictionnaire depuis un fichier et tri du fichier
 
 Remarque(s) :
 
@@ -20,14 +17,13 @@ Compilateur : g++ 7.4.0
 using namespace std;
 
 
-
 vector<string> readFileByLine(const string &filename) {
     vector<string> file;
     ifstream inputFile;
     inputFile.open(filename);
 
     // Check if file is valid and present
-    if(!inputFile.good()){
+    if (!inputFile.good()) {
         return file;
     }
 
@@ -36,8 +32,8 @@ vector<string> readFileByLine(const string &filename) {
         getline(inputFile, line);
         size_t lineSize = line.size();
         // if file encoded as windows and on linux
-        if (lineSize && line.at(lineSize-1) == '\r'){
-            line.resize(line.size()-1);
+        if (lineSize && line.at(lineSize - 1) == '\r') {
+            line.resize(line.size() - 1);
         }
         file.push_back(line);
     }
@@ -80,8 +76,8 @@ void mergeSort(vector<string> &dictionary) {
     if (size - middle > 1) { // second half part
         mergeSort(high);
     } else {
-        high.at(0) =dictionary.at(middle);
+        high.at(0) = dictionary.at(middle);
     }
-    dictionary=mergeVectors(low,high);
+    dictionary = mergeVectors(low, high);
 }
 

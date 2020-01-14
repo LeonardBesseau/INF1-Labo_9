@@ -21,6 +21,13 @@ Compilateur : g++ 7.4.0
 
 using namespace std;
 
+/**
+ * Order a list alphabetically (by inverting or ordering it if needed)
+ * @param list a vector of string containing a list of word
+ */
+void formatListAlphabetically(vector<string> &list);
+
+
 // Test dictionaries
 const vector<string> NATO_WITH_MAJ{"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",
                                    "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
@@ -39,22 +46,44 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
                                    "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
                                    "whiskey"};
 
+
+void formatListAlphabetically(std::vector<std::string> &list) {
+    switch (checkIfSorted(list)) {
+        case 1:
+            inverseList(list);
+            break;
+        case 2:
+            mergeSort(list);
+            break;
+        default:
+            break;
+    }
+}
+
 /**
  * Test function for reading a file from disk and creating of vector of string from its contents
  */
 void testReadingFile() {
-    vector<string> test = readFileByLine("/home/leonard/Downloads/nato.txt");
+    vector<string> test = readFileByLine("nato.txt");
     bool error = false;
     // Check if word read from file are the same as the test dictionary
-    for (size_t i = 0; i < NATO_WITH_MAJ.size(); ++i) {
-        if (test.at(i) != NATO_WITH_MAJ.at(i)) {
-            cout << "Error readingFile Test at index " << i << " element " << test.at(i) << " != "
-                 << NATO_WITH_MAJ.at(i)
-                 << endl;
-            error = true;
+    if (NATO_WITHOUT_MAJ.size() == test.size()) {
+        for (size_t i = 0; i < NATO_WITH_MAJ.size(); ++i) {
+            if (test.at(i) != NATO_WITH_MAJ.at(i)) {
+                cout << "Error readingFile Test at index "
+                     << i
+                     << " element "
+                     << test.at(i)
+                     << " != "
+                     << NATO_WITH_MAJ.at(i)
+                     << endl;
+                error = true;
+            }
         }
+    } else {
+        error = true;
     }
-    cout << (!error ? "Reading from file OK " : "Error") << endl;
+    cout << (!error ? "Reading from file OK " : "Error Reading from file") << endl;
 }
 
 /**
@@ -170,8 +199,8 @@ void testDichotomique() {
     }
     bool validIteratorSearch = NATO_WITHOUT_MAJ.begin() ==
                                rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "alpha");
-    bool validIteratorSearchB = NATO_WITHOUT_MAJ.begin()+4 ==
-                               rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "echo");
+    bool validIteratorSearchB = NATO_WITHOUT_MAJ.begin() + 4 ==
+                                rechercheDichotomique(NATO_WITHOUT_MAJ.cbegin(), NATO_WITHOUT_MAJ.cend(), "echo");
     bool invalidIteratorSearchLower = NATO_WITHOUT_MAJ.end() ==
                                       rechercheDichotomique(NATO_WITHOUT_MAJ.begin(), NATO_WITHOUT_MAJ.end(), "al");
     bool invalidIteratorSearchUpper = NATO_WITHOUT_MAJ.end() ==
@@ -184,7 +213,7 @@ void testDichotomique() {
     if (!validIteratorSearch || !invalidIteratorSearchLower || !invalidIteratorSearchUpper || !validIteratorSearchB) {
         cout << "Error dichotomique Test" << endl;
     }
-    if (!test2 || !test3 || !test4|| !test5 || !test6) {
+    if (!test2 || !test3 || !test4 || !test5 || !test6) {
         cout << "Error dichotomique recursive Test" << endl;
     }
 
@@ -200,8 +229,8 @@ void testDichotomique() {
 bool findWord(const string &path, const string &word) {
     vector<string> dictionary = readFileByLine(path);
     formatListAlphabetically(dictionary);
-    cout << "dictionnary size "<<dictionary.size()<<endl;
-    return rechercheDichotomique(dictionary, word)!= size_t(-1);
+    cout << "dictionnary size " << dictionary.size() << endl;
+    return rechercheDichotomique(dictionary, word) != size_t(-1);
 }
 
 int main() {
@@ -211,8 +240,8 @@ int main() {
     testLinear();
     testDichotomique();
 
-    const string PATH = "/home/dictionary.txt";
+    const string PATH = "/dictionary.txt";
     const string WORD = "knapsacked";
-    cout <<"word " <<(findWord(PATH, WORD)? "found":"not found")<<endl;
+    cout << "word " << (findWord(PATH, WORD) ? "found" : "not found") << endl;
     return 0;
 }

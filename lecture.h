@@ -4,10 +4,7 @@ Fichier : lecture.h
 Auteur(s) : Besseau Zwick Austburger
 Date :  07.01.2020
 
-But : Le but de ce laboratoire est d'établir les bases d'un correcteur orthographique.
-Nous nous intéressons particulièrement à la lecture d'un fichier contenant la liste des mots du dictionnaire,
-et à la recherche dans cette liste d'un mot donné ou d'un vector<string> de mots provenant d'un fichier.
-Le progrmme affiche alors si le ou les mots ne sont pas présent dans le dictionnaire.
+But : Lecture d'un dictionnaire depuis un fichier et tri du fichier
 
 Remarque(s) :
 
@@ -28,9 +25,10 @@ Compilateur : g++ 7.4.0
  *
  * This method read a file line by line.
  * Add them to a string vector.
- * Return the string vector.
  *
  * \param name of the file by reference (constant)
+ * \attention if an error occurred with the file, returns an empty vector
+ * \return a vector of string
  */
 std::vector<std::string> readFileByLine(const std::string &filename);
 

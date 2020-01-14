@@ -43,6 +43,25 @@ vector<string> readFileByLine(const string &filename) {
     return file;
 }
 
+vector<vector<string>> readWordByLine(vector<string> &lines) {
+    vector<vector<string>> separatedLines;
+    vector<string> tempLine;
+
+    for (auto line : lines) {
+        tempLine.clear();
+        string::iterator i = line.begin();
+        // +1 because we take the element after the iterator
+        while (i != line.end() + 1) {
+            string::iterator b = find(i, line.end(), ' ');
+            if (distance(i, b)) {
+                tempLine.emplace_back(i, b);
+            }
+            i = b + 1;
+        }
+        separatedLines.push_back(tempLine);
+    }
+    return separatedLines;
+}
 
 
 

@@ -73,8 +73,12 @@ int checkIfSorted(const vector<string> &list) {
     return listState;
 }
 
-string &normaliseString(string &s) {
-    s.erase(remove_if(s.begin(), s.end(), [](char c) { return !isalpha(c) && c != '\''; }), s.end());
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
+bool isValidChar(char c) {
+    return !isalpha(c) && c != '\'' && c != ' ';
+}
 
+string &normaliseString(string &s) {
+    s.erase(remove_if(s.begin(), s.end(), isValidChar), s.end());
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
 }

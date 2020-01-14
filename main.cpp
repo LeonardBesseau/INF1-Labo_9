@@ -237,8 +237,8 @@ bool findWord(const string &path, const string &word) {
 }
 
 int main() {
-    string test = "a's ))()";
-    normaliseString(test);
+    string test = "aas-ss    r-akdh, 36378eu6s78duh2ns7e278oditgfikmcvhz nd78aopxl,jcsazdcujmewugdbc jgsdhzdjxjwhdkdi9u";
+    cout << normaliseString(test);
     string a;
 /*
     const string PATH = PWD + "dictionary.txt";

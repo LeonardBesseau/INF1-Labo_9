@@ -46,6 +46,7 @@ const vector<string> NATO_SHUFFLED{"kilo", "golf", "november", "charlie", "alpha
                                    "hotel", "mike", "juliet", "quebec", "foxtrot", "india", "oscar", "papa",
                                    "whiskey"};
 
+// Current directory
 const string PWD = "/home/leonard/CLionProjects/Labo_9/";
 
 

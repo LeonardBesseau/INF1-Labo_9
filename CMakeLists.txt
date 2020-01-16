@@ -11,7 +11,5 @@ add_executable(Labo_9
         lecture.h
         lecture.cpp
         main.cpp
-        recherche.h
-        recherche.cpp
         utils.h
         utils.cpp)

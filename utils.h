@@ -27,14 +27,6 @@ Compilateur : g++ 7.4.0
 void swap(std::string &a, std::string &b);
 
 /**
- * Merge two vector into one with the elements in order
- * @param v1 the first vector of string to merge
- * @param v2 the second vector of string to merge
- * @return a vector of string containing all the elements of the two in croissant order
- */
-std::vector<std::string> mergeVectors(const std::vector<std::string> &v1, const std::vector<std::string> &v2);
-
-/**
  * Verify in which order a list is sorted
  * @param list a vector of string containing a list of word
  * @return 0 if the list is sorted alphabetically, 1 if the list is inverted, 2 if the list is shuffled
@@ -50,8 +42,8 @@ std::string &normaliseString(std::string &s);
 
 /**
  * Split a line into words. Words are strings composed of [a-zA-Z] characters and '
- * @param line
- * @return
+ * @param line a string containing words and symbols
+ * @return a vector of vector string containg the word of each line
  */
 std::vector<std::string> split(const std::string &line);
 #endif //LABO_9_UTILS_H

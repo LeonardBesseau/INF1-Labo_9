@@ -15,7 +15,6 @@ Compilateur : g++ 7.4.0
 
 --------------------------- */
 #include <iostream>
-#include "recherche.h"
 #include "lecture.h"
 #include "utils.h"
 
@@ -28,6 +27,14 @@ using namespace std;
  */
 void formatListAlphabetically(vector<string> &list);
 
+/**
+ * Get a list all word not present in dictionary
+ * @param pathDictionary a string containing the path to the file
+ * @param pathBook a string containing the path to the file
+ * @return
+ */
+vector<string> findMissingWord(const string &pathDictionary, const string &pathBook);
+
 // Current directory
 const string PWD = "/home/leonard/CLionProjects/Labo_9/";
 
@@ -38,23 +45,17 @@ void formatListAlphabetically(std::vector<std::string> &list) {
             inverseList(list);
             break;
         case 2:
-            mergeSort(list);
-            // takes 3 times longer than sort
-            // sort(list.begin(), list.end());
+            sort(list.begin(), list.end());
             break;
         default:
             break;
     }
 }
 
-/**
- * Get a list all word not present in dictionary
- * @param pathDictionary a string containing the path to the file
- * @param pathBook a string containing the path to the file
- */
-void findMissingWord(const string &pathDictionary, const string &pathBook) {
+vector<string> findMissingWord(const string &pathDictionary, const string &pathBook) {
     const size_t MAX = size_t(-1);
 
+    // Prepare dictionary
     vector<string> dictionary = readFileByLine(pathDictionary);
 
     //normalize before sorting otherwise won't work
@@ -67,40 +68,35 @@ void findMissingWord(const string &pathDictionary, const string &pathBook) {
     vector<string> book = readFileByLine(pathBook);
     const vector<vector<string>> words = readWordByLine(book);
     vector<vector<string>> wordsNormalized = words;
+
     for (vector<string> &v : wordsNormalized) {
         for (string &s : v) {
             normaliseString(s);
         }
     }
-    vector<string> tttt;
+    vector<string> missingList;
 
 
     for (std::size_t i = 0; i < wordsNormalized.size(); ++i) {
         for (size_t j = 0; j < wordsNormalized.at(i).size(); ++j) {
-            size_t position = rechercheDichotomique(dictionary, wordsNormalized.at(i).at(j));
-            if (MAX == position) {
-                string missing = to_string(i);
-                missing += " : " + words.at(i).at(j);
-                cout << missing << endl;
-                tttt.push_back(missing);
+            bool found = binary_search(dictionary.begin(), dictionary.end(), wordsNormalized.at(i).at(j));
+            if (!found) {
+                string missing = to_string(i + 1);
+                missing += ": " + words.at(i).at(j);
+                missingList.push_back(missing);
             }
         }
     }
-    cout << "dictionnary size " << dictionary.size() << endl;
-    cout << "missing size " << tttt.size() << endl;
-
+    return missingList;
 }
 
 int main() {
     string dict = PWD + "dictionary.txt";
     string input = PWD + "input_sh.txt";
-    findMissingWord(dict, input);
-/*
-
-    cout << "word " << (findWord(PATH, WORD) ? "found" : "not found") << endl;
-    */
+    vector<string> list = findMissingWord(dict, input);
+    for (string &s : list) {
+        cout << s << endl;
+    }
     return 0;
 }
-// 2720524 with mergeSort and our merge
-// 1840764 with mergeSort and algorithm merge | 1.47 times faster
-// 965076 with sort | 2.8 times faster
+

@@ -49,18 +49,4 @@ std::vector<std::vector<std::string>> readWordByLine(std::vector<std::string> &l
  */
 void inverseList(std::vector<std::string> &dictionary);
 
-/**
- * Sort the dictionary using bubbleSort
- * @param dictionary a vector of string containing the entries of the dictionary
- * @details based on https://en.wikipedia.org/wiki/Bubble_sort#Optimizing_bubble_sort
- */
-void bubbleSort(std::vector<std::string> &dictionary);
-
-
-/**
- * Sort the dictionary using mergesort
- * @param dictionary a vector of string containing the entries of the dictionary
- */
-void mergeSort(std::vector<std::string> &dictionary);
-
 #endif //LABO_9_LECTURE_H

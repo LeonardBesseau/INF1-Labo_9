@@ -31,9 +31,9 @@ void formatListAlphabetically(vector<string> &list);
  * Get a list all word not present in dictionary
  * @param pathDictionary a string containing the path to the file
  * @param pathBook a string containing the path to the file
- * @return
+ * @return a vector containg the string of all the words not found in the dictionary
  */
-vector<string> findMissingWord(const string &pathDictionary, const string &pathBook);
+vector<string> findMissingWords(const string &pathDictionary, const string &pathBook);
 
 // Current directory
 const string PWD = "/home/leonard/CLionProjects/Labo_9/";
@@ -52,7 +52,7 @@ void formatListAlphabetically(std::vector<std::string> &list) {
     }
 }
 
-vector<string> findMissingWord(const string &pathDictionary, const string &pathBook) {
+vector<string> findMissingWords(const string &pathDictionary, const string &pathBook) {
     const size_t MAX = size_t(-1);
 
     // Prepare dictionary
@@ -76,7 +76,6 @@ vector<string> findMissingWord(const string &pathDictionary, const string &pathB
     }
     vector<string> missingList;
 
-
     for (std::size_t i = 0; i < wordsNormalized.size(); ++i) {
         for (size_t j = 0; j < wordsNormalized.at(i).size(); ++j) {
             bool found = binary_search(dictionary.begin(), dictionary.end(), wordsNormalized.at(i).at(j));
@@ -93,7 +92,7 @@ vector<string> findMissingWord(const string &pathDictionary, const string &pathB
 int main() {
     string dict = PWD + "dictionary.txt";
     string input = PWD + "input_sh.txt";
-    vector<string> list = findMissingWord(dict, input);
+    vector<string> list = findMissingWords(dict, input);
     for (string &s : list) {
         cout << s << endl;
     }
